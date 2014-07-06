@@ -28,18 +28,15 @@ public class Demo {
       List<Topic> topics = api.getTopics();
       System.out.println("topics: " + topics);
       
-      Translation translation = new Translation();
-      translation.text = "Some text";
-      translation.sourceLanguage = "en";
-      translation.targetLanguage = "pt";
+      Translation translation = new Translation("Some text", "en", "pt");
       System.out.println("Requesting a translation...");
       Translation retval = api.postTranslation(translation);
       System.out.println("response: " + retval);
       Thread.sleep(4000);
-      retval = api.getTranslation(retval.uid);
+      retval = api.getTranslation(retval.getUid());
       System.out.println("response after 4 sec: " + retval);
       Thread.sleep(60000);
-      retval = api.getTranslation(retval.uid);
+      retval = api.getTranslation(retval.getUid());
       System.out.println("response after 60 sec: " +retval);
       List<Translation> retvals = api.getTranslations();
       System.out.println("Requesting all translations...");
